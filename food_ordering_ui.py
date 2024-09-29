@@ -36,7 +36,36 @@ def print_check(current_order):
 
 def change_order(current_order):
     print("Change the order:")
+def manager_menu():
+    while True:
+        print("\nManager Menu:")
+        print("1. Update a menu item")
+        print("2. Add a new menu item")
+        print("3. Remove a menu item")
+        print("4. Display menu")
+        print("5. Return to main menu")
+        choice = input("Choose an option: ")
 
+        if choice == '1':
+            code = input("Enter item code: ")
+            field = input("What do you want to update (name/price)? ").lower()
+            new_value = input(f"Enter new {field}: ")
+            functions.update_menu_item(data.menu_dict, code, field, new_value)
+        elif choice == '2':
+            code = input("Enter new item code: ")
+            name = input("Enter item name: ")
+            price = input("Enter item price: ")
+            stock = input("Enter item stock: ")
+            functions.add_menu_item(data.menu_dict, code, name, price, stock)
+        elif choice == '3':
+            code = input("Enter item code to remove: ")
+            functions.remove_menu_item(data.menu_dict, code)
+        elif choice == '4':
+            functions.display_menu(data.menu_dict)
+        elif choice == '5':
+            break
+        else:
+            print("Invalid choice, please try again.")
 if __name__ == '_main_':
     #initialize the lists
     drinks = []
